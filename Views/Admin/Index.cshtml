@@ -1,0 +1,194 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+    ViewData["page"] = "Dashboard";
+}
+<!-- Table -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Order Statistics</h4>
+                        <h5 class="card-subtitle">Overview of Order Statistics</h5>
+                    </div>
+                    <div class="ms-auto">
+                        <div class="dl">
+                            <form class='form-group' onsubmit='return false'>
+                                <h>Start Date</h><input type='date' id='startDate' required class='form-control' placeholder='StartDate' />
+                                <h>End Date</h><input type='date' id='endDate' required class='form-control' placeholder='EndDate' />
+                                <button id='onStatic' class='btn btn-primary'>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <canvas id="myChart" width="400" height="100"></canvas>
+        </div>
+    </div>
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="">
+                    <div>
+                        <h4 class="card-title">Order Statistics with Table</h4>
+                        <h5 class="card-subtitle">Overview of Revenue Statistics</h5>
+                        <form class='form-group' asp-action='ExportToExcelOrder'>
+                            <h>Start Date</h><input type='date' name='startDate' required class='form-control' placeholder='StartDate' />
+                            <h>End Date</h><input type='date' name='endDate' required class='form-control' placeholder='EndDate' />
+                            <button class='btn btn-primary mt-2 mb-3'>Export Excel</button>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table v-middle">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th class="border-top-0">FullName</th>
+                                    <th class="border-top-0">Email</th>
+                                    <th class="border-top-0">Phone</th>
+                                    <th class="border-top-0">UserName</th>
+                                    <th class="border-top-0">List Product</th>
+                                    <th class="border-top-0">CreateAt</th>
+                                    <th class="border-top-0">Method Payment</th>
+                                    <th class="border-top-0">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in ViewBag.Orders)
+                                {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="m-r-10">
+                                                <img src="~/admin/assets/images/users/avarta.jpg" alt="user" class="rounded-circle" width="31">
+                                            </div>
+                                            <div class="">
+                                                <h4 class="m-b-0 font-16">@order.FirstName @order.LastName</h4>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@order.Email</td>
+                                    <td>@order.Phone</td>
+                                    <td>@order.AppUser.UserName</td>
+                                    <td>
+                                        @foreach (var p in @order.ProductOrders)
+                                            {
+                                        <li>@p.Product.Name</li>
+                                            }
+                                    </td>
+                                    <td>@order.CreateAt</td>
+                                    <td>
+                                        @{
+                                                if (order.Method == "0")
+                                                {
+                                            <p>Delivery</p>
+                                                }
+                                                else
+                                                {
+                                            <p>Momo</p>
+                                                }
+                                        }
+                                    </td>
+                                    <td>
+                                        @{
+                                                if (order.Status == false)
+                                                {
+                                            <p>During processing</p>
+                                                }
+                                                else
+                                                {
+                                            <p>Done</p>
+                                                }
+                                        }
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <paging total-records="Model.TotalRecords" page-no="Model.PageIndex"
+                            max-displayed-pages="5"
+                            page-size="Model.PageSize"
+                            page-size-dropdown-items="5-15-30"
+                            show-total-pages="false"
+                            show-page-size-nav="false"
+                            show-total-records="false"
+                            class="float-right">
+                    </paging>
+                </div>
+                <!-- title -->
+            </div>
+            <table>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- ============================================================== -->
+<!-- Table -->
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js" integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $("#onStatic").click((e) => {
+            const startDate = $("#startDate").val()
+            const endDate = $("#endDate").val()
+            if (startDate && endDate) {
+                if (document.getElementById('myChart')) {
+                    $('#myChart').replaceWith($('<canvas id="myChart" height="320px"></canvas>'));
+                }
+                getReport(startDate, endDate);
+            }
+        })
+
+        function getReport(startDate, endDate) {
+            $.ajax({
+                url: `/admin/getreport?startDate=${startDate}&endDate=${endDate}`,
+                type: 'get',
+                success: function (response) {
+                    console.log(response)
+                    RegisterChartProduct(response)
+                }
+            })
+        }
+        getReport(moment().subtract(30, "days").format('MM-DD-YYYY'), moment().format('MM-DD-YYYY'));
+
+        var lsLabel = [];
+        var LsDataSource = [];
+
+        function RegisterChartProduct(lsData) {
+            lsLabel = [];
+            LsDataSource = [];
+            lsData.map((item) => {
+                lsLabel.push(item.createAt);
+                LsDataSource.push(item.total)
+            })
+
+            const ctx = document.getElementById('myChart');
+
+            var barChartData = {
+                labels: lsLabel,
+                datasets: [{
+                    label: "Order statistics",
+                    backgroundColor: "#0b9663",
+                    borderWidth: 1,
+                    data: LsDataSource
+                }]
+            };
+            var myBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData
+            })
+        }
+
+    </script>
+}

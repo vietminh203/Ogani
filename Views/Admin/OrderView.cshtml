@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+    ViewData["page"] = "Order";
+
+
+
+}
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Order</h4>
+                        <h5 class="card-subtitle">Order View</h5>
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                        <tr class="bg-light">
+                            <th class="border-top-0">FullName</th>
+                            <th class="border-top-0">Email</th>
+                            <th class="border-top-0">Phone</th>
+                            <th class="border-top-0">UserName</th>
+                            <th class="border-top-0">CreateAt</th>
+                            <th class="border-top-0">Method Payment</th>
+                            <th class="border-top-0">Status</th>
+                            <th class="border-top-0">Total</th>
+                            <th class="border-top-0">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in ViewBag.Orders)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <img src="~/admin/assets/images/users/avarta.jpg" alt="user" class="rounded-circle" width="31">
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">@order.FirstName @order.LastName</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@order.Email</td>
+                                <td>@order.Phone</td>
+                                <td>@order.AppUser.UserName</td>
+                                <td>@order.CreateAt</td>
+                                <td>
+                                    @{
+                                        if (order.Method == "0")
+                                        {
+                                            
+                                        }
+                                        else
+                                        {
+                                            <p>Momo</p>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                                        if (order.Status == false)
+                                        {
+                                            <p>During processing</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Done</p>
+                                        }
+                                    }
+                                </td>
+                                <td>@order.Total$</td>
+                                <td>
+                                    <a asp-action='UpdateOrderStatus' asp-route-Id='@order.Id' class='btn btn-primary'>Update Order Status</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <paging total-records="Model.TotalRecords" page-no="Model.PageIndex"
+                    max-displayed-pages="5"
+                    page-size="Model.PageSize"
+                    page-size-dropdown-items="5-15-30"
+                    show-total-pages="false"
+                    show-page-size-nav="false"
+                    show-total-records="false"
+                    class="float-right">
+            </paging>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Table -->

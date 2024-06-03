@@ -1,0 +1,218 @@
+﻿<!-- Hero Section Begin -->
+<section class="hero hero-normal">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="hero__categories">
+          <div class="hero__categories__all">
+            <i class="fa fa-bars"></i>
+            <span>All departments</span>
+          </div>
+          <ul>
+                        @foreach (var ct in ViewBag.Categories)
+                        {
+                            <li><a href="?categoryId=@ct.Id">@ct.Name</a></li>
+                        }
+                    </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="hero__search">
+          <div class="hero__search__form">
+            <form action="#">
+              <input name='keyword' type="text" placeholder="What do yo u need?" />
+              <button type="submit" class="site-btn">SEARCH</button>
+            </form>
+          </div>
+          <div class="hero__search__phone">
+            <div class="hero__search__phone__icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="hero__search__phone__text">
+                <h5>+0987654321</h5>
+                                <span>support 24/7 time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="breadcrumb__text">
+          <h2>Organi Shop</h2>
+          <div class="breadcrumb__option">
+            <a href="./index.html">Home</a>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Product Section Begin -->
+<section class="product spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-5">
+        <div class="sidebar">
+          <div class="sidebar__item">
+            <h4>Department</h4>
+            <ul>
+                        @foreach (var ct in ViewBag.Categories)
+                        {
+                            <li><a href="?categoryId=@ct.Id">@ct.Name</a></li>
+                        }
+                    </ul>
+          </div>
+          <div class="sidebar__item">
+            <div class="latest-product__text">
+              <h4>Latest Products</h4>
+              <div class="latest-product__slider owl-carousel">
+                @foreach(var later in ViewBag.latestProduct) {
+                <div class="latest-prdouct__slider__item">
+                  @foreach(var p in later) {
+                  <a href="#" class="latest-product__item">
+                    <div class="latest-product__item__pic">
+                      <img style = 'width:120px' src="/store-image/@p.Image" alt="" />
+                    </div>
+                    <div class="latest-product__item__text">
+                      <h6>@p.Name</h6>
+                      <span>$@p.CurrentPrice</span>
+                    </div>
+                  </a>
+
+                  }
+                </div>
+
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-7">
+        <div class="product__discount">
+          <div class="section-title product__discount__title">
+            <h2>Favorite</h2>
+          </div>
+          <div class="row">
+            <div class="product__discount__slider owl-carousel">
+                @foreach(var p in @ViewBag.Favorite){
+                <div class="col-lg-4">
+                <div class="product__discount__item">
+                  <div
+                    class="product__discount__item__pic set-bg"
+                    data-setbg="/store-image/@p.Image"
+                  >
+                    <ul class="product__item__pic__hover">
+                      <li>
+                        <a href="#"><i class="fa fa-heart"></i></a>
+                      </li>
+                      <li>
+                        <a asp-action="ShopDetail" asp-route-Id="@p.Id"><i class="fa fa-retweet"></i></a>
+                      </li>
+                      <li>
+                        <a asp-action='AddToCart' asp-route-productId="@p.Id"><i class="fa fa-shopping-cart"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="product__discount__item__text">
+                    <span>@p.Name</span>
+                    <h5><a asp-action="ShopDetail" asp-route-Id="@p.Id">@p.Name</a></h5>
+                    <div class="product__item__price">
+                      $@p.CurrentPrice
+                    </div>
+                  </div>
+                </div>
+              </div>
+                }
+            
+            </div>
+          </div>
+        </div>
+        <div class="filter__item">
+          <div class="row">
+            <div class="col-lg-4 col-md-5">
+              <div class="filter__sort">
+                <span>Sort By</span>
+                <select onchange='OrderBy(value)'>
+                  <option value="CreateAt">Default</option>
+                  <option value="Name">Name</option>
+                  <option value="Description">Description</option>
+                  <option value="ToTalRemaining">ToTalRemaining</option>
+                  <option value="Rate">Rate</option>
+                </select>
+                <script>
+                    function OrderBy(name){
+                       window.location.href="?sorting="+name;
+                    }
+                </script>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+              <div class="filter__found">
+                <h6><span>@ViewBag.Products.Count</span> Products found</h6>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-3">
+              <form class='input-group'>
+                    <input type="text" class='form-control' placeholder="What do yo u need?" name='Keyword' />
+                     <button type="submit" class="form-label btn btn-primary">SEARCH</button>
+               </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          @foreach(var product in ViewBag.Products) {
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="/store-image/@product.Image"
+              >
+                <ul class="product__item__pic__hover">
+                  <li>
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                  </li>
+                  <li>
+                    <a asp-action="ShopDetail" asp-route-Id="@product.Id"><i class="fa fa-retweet"></i></a>
+                  </li>
+                  <li>
+                    <a asp-action='AddToCart' asp-route-productId="@product.Id"><i class="fa fa-shopping-cart"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="product__item__text">
+                <h6><a href="#">@product.Name</a></h6>
+                <h5>$@product.CurrentPrice</h5>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+        <paging
+          total-records="Model.TotalRecords"
+          page-no="Model.PageIndex"
+          max-displayed-pages="5"
+          page-size="Model.PageSize"
+          page-size-dropdown-items="5-15-30"
+          show-total-pages="false"
+          show-page-size-nav="false"
+          show-total-records="false"
+          class="float-right mb-2"
+        >
+        </paging>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product Section End -->

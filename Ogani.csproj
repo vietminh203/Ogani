@@ -1,0 +1,218 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>4b42075a-03f1-45ae-b8dd-4a6abc88a62a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\EmailTemplate\EmailConfirm.html" />
+    <None Remove="wwwroot\EmailTemplate\ForgotPassword.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\assets\.DS_Store" />
+    <None Include="wwwroot\admin\assets\libs\.DS_Store" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\.DS_Store" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\admin\assets\libs\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\admin\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.min.js" />
+    <None Include="wwwroot\admin\assets\libs\chartist\dist\chartist.min.js" />
+    <None Include="wwwroot\admin\assets\libs\jquery\dist\core.js" />
+    <None Include="wwwroot\admin\assets\libs\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\admin\assets\libs\jquery\dist\jquery.slim.min.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.min.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\js\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\perfect-scrollbar.common.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\perfect-scrollbar.esm.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\perfect-scrollbar.jquery.min.js" />
+    <None Include="wwwroot\admin\assets\libs\perfect-scrollbar\dist\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\esm\popper-utils.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\esm\popper.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\popper-utils.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\popper.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\umd\popper-utils.min.js" />
+    <None Include="wwwroot\admin\assets\libs\popper.js\dist\umd\popper.min.js" />
+    <None Include="wwwroot\admin\dist\.DS_Store" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\fa-brands.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\fa-regular.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\fa-solid.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\fontawesome.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_animated.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_bordered-pulled.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_core.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_fixed-width.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_icons.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_larger.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_list.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_mixins.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_rotated-flipped.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_screen-reader.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_stacked.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\less\_variables.less" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\fa-brands.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\fa-regular.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\fa-solid.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\fontawesome.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\font-awesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\themify-icons\fonts\themify.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\themify-icons\ie7\ie7.js" />
+    <None Include="wwwroot\admin\dist\css\icons\themify-icons\themify-icons.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.svg" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.woff2" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-beaufort.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-day.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-direction.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-misc.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-moon-aliases.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-moon.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-neutral.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-night.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-time.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-wind-aliases.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-wind-degrees.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-classes\classes-wind.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-beaufort.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-day.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-direction.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-misc.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-moon.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-neutral.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-night.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-time.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\icon-variables\variables-wind-names.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\mappings\wi-forecast-io.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\mappings\wi-owm.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\mappings\wi-wmo4680.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\mappings\wi-yahoo.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons-classes.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons-core.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons-variables.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons-wind.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons-wind.min.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\less\weather-icons.min.less" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-beaufort.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-day.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-direction.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-misc.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-moon-aliases.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-moon.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-neutral.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-night.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-time.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-wind-aliases.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-wind-degrees.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-classes\classes-wind.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-beaufort.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-day.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-direction.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-misc.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-moon.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-neutral.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-night.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-time.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\icon-variables\variables-wind-names.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\mappings\wi-forecast-io.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\mappings\wi-owm.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\mappings\wi-wmo4680.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\mappings\wi-yahoo.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons-classes.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons-core.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons-variables.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons-wind.min.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons-wind.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons.min.scss" />
+    <None Include="wwwroot\admin\dist\css\icons\weather-icons\sass\weather-icons.scss" />
+    <None Include="wwwroot\admin\dist\js\app-style-switcher.js" />
+    <None Include="wwwroot\admin\dist\js\custom.js" />
+    <None Include="wwwroot\admin\dist\js\pages\dashboards\dashboard1.js" />
+    <None Include="wwwroot\admin\dist\js\sidebarmenu.js" />
+    <None Include="wwwroot\admin\dist\js\waves.js" />
+    <None Include="wwwroot\assets\js\config.js" />
+    <None Include="wwwroot\assets\js\dashboards-analytics.js" />
+    <None Include="wwwroot\assets\js\extended-ui-perfect-scrollbar.js" />
+    <None Include="wwwroot\assets\js\form-basic-inputs.js" />
+    <None Include="wwwroot\assets\js\main.js" />
+    <None Include="wwwroot\assets\js\pages-account-settings-account.js" />
+    <None Include="wwwroot\assets\js\ui-modals.js" />
+    <None Include="wwwroot\assets\js\ui-popover.js" />
+    <None Include="wwwroot\assets\js\ui-toasts.js" />
+    <None Include="wwwroot\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <None Include="wwwroot\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <None Include="wwwroot\assets\vendor\js\bootstrap.js" />
+    <None Include="wwwroot\assets\vendor\js\helpers.js" />
+    <None Include="wwwroot\assets\vendor\js\menu.js" />
+    <None Include="wwwroot\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <None Include="wwwroot\assets\vendor\libs\highlight\highlight.js" />
+    <None Include="wwwroot\assets\vendor\libs\jquery\jquery.js" />
+    <None Include="wwwroot\assets\vendor\libs\masonry\masonry.js" />
+    <None Include="wwwroot\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <None Include="wwwroot\assets\vendor\libs\popper\popper.js" />
+    <None Include="wwwroot\js\site.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="LazZiya.TagHelpers" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="SendGrid" Version="9.26.0" />
+  </ItemGroup>
+
+</Project>

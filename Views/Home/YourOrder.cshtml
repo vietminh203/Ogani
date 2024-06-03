@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+@model Ogani.ViewModel.PagedResultBase
+@if (TempData["errorr"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["error"]
+    </div>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <form class="float-right d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input type="text" class="form-control bg-light border-1 small" placeholder="Search for..."
+                       aria-label="Search" aria-describedby="basic-addon2" asp-for="Keyword">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="border-top-0">FullName</th>
+                        <th class="border-top-0">Email</th>
+                        <th class="border-top-0">Phone</th>
+                        <th class="border-top-0">CreateAt</th>
+                        <th class="border-top-0">Method Payment</th>
+                        <th class="border-top-0">Status</th>
+                        <th class="border-top-0">Total</th>
+                        <th class="border-top-0">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var data in ViewBag.List)
+                        {
+                            <tr>
+                                <td>@data.FirstName @data.LastName</td>
+                                <td>@data.Email</td>
+                                <td>@data.Phone</td>
+                                <td>@data.CreateAt</td>
+                                <td>
+                                    @{
+                                        if (data.Method == "0")
+                                        {
+                                            <p>Delivery</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Momo</p>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                                        if (data.Status == false)
+                                        {
+                                            <p>During processing</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Done</p>
+                                        }
+                                    }
+                                </td>
+                                <td>@data.Total$</td>
+                                @{
+                                      if (data.Status == false)
+                                        {
+                                        <td><a class='btn' asp-action='RemoveOrder' asp-route-Id=@data.Id>Remove</a></td>
+                                    }
+                                    else
+                                    {
+                                       <td><button class='btn' disabled>Remove</button></td> 
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <paging total-records="Model.TotalRecords"
+                    page-no="Model.PageIndex"
+                    max-displayed-pages="5"
+                    page-size="Model.PageSize"
+                    page-size-dropdown-items="5-15-30">
+            </paging>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+
+    ViewData["page"] = "User";
+
+
+}
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">User</h4>
+                        <h5 class="card-subtitle">Overview of User</h5>
+                        @if (TempData["msg"] != null)
+                        {
+                            <div class="alert alert-primary" role="alert">
+                                @TempData["msg"]
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                        <tr class="bg-light">
+                            <th class="border-top-0">FullName</th>
+                            <th class="border-top-0">UserName</th>
+                            <th class="border-top-0">Email</th>
+                            <th class="border-top-0">PhoneNumber</th>
+                            <th class="border-top-0">Date Of birth</th>
+                            <th class="border-top-0">Roles</th>
+                            <th class="border-top-0">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <img src="~/admin/assets/images/users/avarta.jpg" alt="user" class="rounded-circle" width="31">
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">
+                                                @user.FirstName
+                                                @if (user.LastName != null)
+                                                {
+                                                    <span>@user.LastName</span>
+                                                }
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@user.UserName</td>
+                                <td>@user.Email</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.DateOfBirth</td>
+                                <td>
+                                    @foreach (var userRole in user.AppUserRoles)
+                                    {
+                                        <li>@userRole.AppRole.Name</li>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Menu
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" asp-action='UpdateUser' asp-route-Id="@user.Id">Update</a></li>
+                                            <li><a class="dropdown-item" asp-action='RoleAssign' asp-route-Id="@user.Id">Role Assign</a></li>
+                                            <li><a class="dropdown-item" asp-action='DeleteUser' asp-route-Id="@user.Id">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <paging total-records="Model.TotalRecords"
+                     page-no="Model.PageIndex"
+                        max-displayed-pages="5"
+                        page-size="Model.PageSize"
+                        page-size-dropdown-items="5-15-30"
+                        show-total-pages="false"
+                        show-page-size-nav="false"
+                        show-total-records="false"
+                        class="float-right">
+                </paging>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Table -->

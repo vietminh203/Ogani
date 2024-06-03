@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+    ViewData["page"] = "Supplier";
+
+}
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Top Selling Products</h4>
+                        <h5 class="card-subtitle">Overview of Top Selling Items</h5>
+                          <a class='btn btn-primary' asp-action="SupplierCreate">Create</a>
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                        <tr class="bg-light">
+                            <th class="border-top-0">Supplier Name</th>
+                            <th class="border-top-0">Supplier Description</th>
+                            <th class="border-top-0">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var supplier in ViewBag.Suppliers)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <img src="~/admin/assets/images/users/12.png" alt="user" class="rounded-circle" width="31">
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">@supplier.Name</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@supplier.Description</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Menu
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" asp-action='SupplierUpdate' asp-route-id=@supplier.Id>Update</a></li>
+                                            <li><a class="dropdown-item" asp-action='SupplierDelete' asp-route-id=@supplier.Id>Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                      
+                </table>
+            </div>
+             <paging 
+                total-records="Model.TotalRecords" 
+                page-no="Model.PageIndex"
+                max-displayed-pages="5"
+                page-size="Model.PageSize"
+                page-size-dropdown-items="5-15-30"
+			     show-total-pages="false"
+			     show-page-size-nav="false"
+			     show-total-records="false"
+			     class="float-right mb-2"
+			 >
+            </paging>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Table -->

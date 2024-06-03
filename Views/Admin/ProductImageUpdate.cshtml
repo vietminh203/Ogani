@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+    ViewData["page"] = "Product";
+
+    ViewData["Expand"] = "Product Image Update";
+    ViewData["linkSub"] = "/admin/ProductView";
+
+
+}
+<form asp-action='ProductImageUpdate' enctype="multipart/form-data">
+    <input type='file' name='img' />
+    <img src='/store-image/@Model.Name' />
+    <button class='btn btn-primary'>Submit</button>
+</form>

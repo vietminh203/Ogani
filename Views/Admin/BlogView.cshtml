@@ -1,0 +1,90 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+
+    ViewData["page"] = "Blog";
+}
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- title -->
+                <div class="d-md-flex">
+                    <div>
+                        <h4 class="card-title">Blog</h4>
+                        <h5 class="card-subtitle">Overview of Blog</h5>
+                        <a class='btn btn-primary' asp-action='CreateBlog'>Create</a>
+                        @if (TempData["msg"] != null)
+                        {
+                            <div class="alert alert-primary" role="alert">
+                                @TempData["msg"]
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- title -->
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                        <tr class="bg-light">
+                            <th class="border-top-0">Title</th>
+                            <th class="border-top-0">Users</th>
+                            <th class="border-top-0">CreateAt</th>
+                            <th class="border-top-0">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in ViewBag.Blogs)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <a class="btn btn-circle d-flex btn-info text-white"><img src='/store-image/@blog.Image' /></a>
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">
+                                                @blog.Title
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@blog.AppUser.UserName</td>
+                                <td>@blog.CreateAt</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Menu
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" asp-action='UpdateBlog' asp-route-Id="@blog.Id">Update</a></li>
+                                            <li><a class="dropdown-item" asp-action='DeleteBlog' asp-route-Id="@blog.Id">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <paging total-records="Model.TotalRecords"
+                        page-no="Model.PageIndex"
+                        max-displayed-pages="5"
+                        page-size="Model.PageSize"
+                        page-size-dropdown-items="5-15-30"
+                        show-total-pages="false"
+                        show-page-size-nav="false"
+                        show-total-records="false"
+                        class="float-right">
+                </paging>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Table -->
